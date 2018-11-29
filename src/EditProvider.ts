@@ -110,6 +110,7 @@ export default class PrettierEditProvider
           )
         }
         handleError(document, e.message, errorPosition)
+        return []
       })
   }
 
@@ -124,6 +125,7 @@ export default class PrettierEditProvider
         let errorPosition
         if (e.loc) errorPosition = new Position(e.loc.line - 1, e.loc.column)
         handleError(document, e.message, errorPosition)
+        return []
       })
   }
 }
