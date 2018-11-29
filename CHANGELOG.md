@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.0]
+
+- Add prettier.arrowParens config
+- Removed prettier.tabWidth and prettier.singleQuote configs as standard overrides them anyway
+
 ## [0.4.0]
 
 - Bumps prettier to 1.15.2
