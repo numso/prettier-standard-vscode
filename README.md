@@ -35,13 +35,6 @@ Respects `editor.formatOnSave` setting.
 
 Fit code within this line limit
 
-#### tabWidth (default: 2)
-
-Number of spaces it should use per tab
-
-#### singleQuote (default: false)
-If false, will use double instead of single quotes
-
 #### trailingComma (default: 'none')
 Controls the printing of trailing commas wherever possible. Valid options:
  - "none" - No trailing commas

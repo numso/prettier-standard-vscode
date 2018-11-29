@@ -23,8 +23,6 @@ type ShowAction = 'Show'
 interface PrettierConfig {
   arrowParens: ArrowParensOption
   printWidth: number
-  tabWidth: number
-  singleQuote: boolean
   trailingComma: TrailingCommaOption
   bracketSpacing: boolean
   jsxBracketSameLine: boolean
@@ -37,8 +35,7 @@ function format(text: string): Promise<string> {
     const pretty = prettier.format(text, {
       arrowParens: config.arrowParens || 'avoid',
       printWidth: config.printWidth,
-      tabWidth: config.tabWidth,
-      singleQuote: config.singleQuote,
+      singleQuote: true,
       trailingComma: config.trailingComma || 'es5',
       bracketSpacing: config.bracketSpacing,
       jsxBracketSameLine: config.jsxBracketSameLine,

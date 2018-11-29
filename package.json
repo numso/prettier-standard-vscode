@@ -48,16 +48,6 @@
           "default": 80,
           "description": "Fit code within this line limit"
         },
-        "prettier.tabWidth": {
-          "type": "integer",
-          "default": 2,
-          "description": "Number of spaces it should use per tab"
-        },
-        "prettier.singleQuote": {
-          "type": "boolean",
-          "default": true,
-          "description": "If true, will use single instead of double quotes"
-        },
         "prettier.trailingComma": {
           "type": "string",
           "enum": [
