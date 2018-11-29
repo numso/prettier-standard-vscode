@@ -34,6 +34,15 @@
       "type": "object",
       "title": "Prettier-Standard - JavaScript formatter configuration",
       "properties": {
+        "prettier.arrowParens": {
+          "type": "string",
+          "enum": [
+            "avoid",
+            "always"
+          ],
+          "default": "avoid",
+          "description": "Include parentheses around a sole arrow function parameter."
+        },
         "prettier.printWidth": {
           "type": "integer",
           "default": 80,
