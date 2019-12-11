@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.0]
+
+- Move project from typescript to javascript
+
 ## [0.5.0]
 
 - Add prettier.arrowParens config

@@ -6,11 +6,11 @@ import {
   workspace
 } from 'vscode'
 
-import EditProvider from './EditProvider'
+import EditProvider from './edit-provider'
 
-const VALID_LANG: DocumentSelector = ['javascript', 'javascriptreact']
+const VALID_LANG = ['javascript', 'javascriptreact']
 
-export function activate(context: ExtensionContext) {
+export function activate (context) {
   const editProvider = new EditProvider()
   context.subscriptions.push(
     languages.registerDocumentRangeFormattingEditProvider(
@@ -23,4 +23,4 @@ export function activate(context: ExtensionContext) {
   )
 }
 
-export function deactivate() {}
+export function deactivate () {}

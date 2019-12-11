@@ -15,23 +15,9 @@ import {
 const prettier = require('prettier')
 const standard = require('standard')
 
-type ArrowParensOption = 'avoid' | 'always'
-type ParserOption = 'babylon' | 'flow'
-type TrailingCommaOption = 'none' | 'es5' | 'all'
-type ShowAction = 'Show'
-
-interface PrettierConfig {
-  arrowParens: ArrowParensOption
-  printWidth: number
-  trailingComma: TrailingCommaOption
-  bracketSpacing: boolean
-  jsxBracketSameLine: boolean
-  parser: ParserOption
-}
-
-function format(text: string): Promise<string> {
+function format (text) {
   return new Promise((resolve, reject) => {
-    const config: PrettierConfig = workspace.getConfiguration('prettier') as any
+    const config = workspace.getConfiguration('prettier')
     const pretty = prettier.format(text, {
       arrowParens: config.arrowParens || 'avoid',
       printWidth: config.printWidth,
@@ -53,7 +39,7 @@ function format(text: string): Promise<string> {
         return reportError('3', result)
       }
     )
-    function reportError(num, obj) {
+    function reportError (num, obj) {
       // console.log(num, JSON.stringify(obj, null, 2))
       standard.lintText(
         text,
@@ -80,21 +66,13 @@ function format(text: string): Promise<string> {
   })
 }
 
-function fullDocumentRange(document: TextDocument): Range {
+function fullDocumentRange (document) {
   const lastLineId = document.lineCount - 1
   return new Range(0, 0, lastLineId, document.lineAt(lastLineId).text.length)
 }
 
-export default class PrettierEditProvider
-  implements
-    DocumentRangeFormattingEditProvider,
-    DocumentFormattingEditProvider {
-  provideDocumentRangeFormattingEdits(
-    document: TextDocument,
-    range: Range,
-    options: FormattingOptions,
-    token: CancellationToken
-  ): Promise<TextEdit[]> {
+export default class PrettierEditProvider {
+  provideDocumentRangeFormattingEdits (document, range, options, token) {
     return format(document.getText(range))
       .then(newText => [TextEdit.replace(range, newText)])
       .catch(e => {
@@ -112,11 +90,7 @@ export default class PrettierEditProvider
       })
   }
 
-  provideDocumentFormattingEdits(
-    document: TextDocument,
-    options: FormattingOptions,
-    token: CancellationToken
-  ): Promise<TextEdit[]> {
+  provideDocumentFormattingEdits (document, options, token) {
     return format(document.getText())
       .then(newText => [TextEdit.replace(fullDocumentRange(document), newText)])
       .catch(e => {
@@ -128,21 +102,15 @@ export default class PrettierEditProvider
   }
 }
 
-function handleError(
-  document: TextDocument,
-  message: string,
-  errorPosition: Position
-) {
+function handleError (document, message, errorPosition) {
   if (!errorPosition) return window.showErrorMessage(message)
-  window
-    .showErrorMessage(message, 'Show')
-    .then(function onAction(action?: ShowAction) {
-      if (action === 'Show') {
-        const rangeError = new Range(errorPosition, errorPosition)
-        window.showTextDocument(document).then(editor => {
-          editor.selection = new Selection(rangeError.start, rangeError.end)
-          editor.revealRange(rangeError)
-        })
-      }
-    })
+  window.showErrorMessage(message, 'Show').then(function onAction (action) {
+    if (action === 'Show') {
+      const rangeError = new Range(errorPosition, errorPosition)
+      window.showTextDocument(document).then(editor => {
+        editor.selection = new Selection(rangeError.start, rangeError.end)
+        editor.revealRange(rangeError)
+      })
+    }
+  })
 }
