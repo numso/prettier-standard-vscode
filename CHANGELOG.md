@@ -3,6 +3,8 @@
 ## [0.6.0]
 
 - Move project from typescript to javascript
+- Use the prettier-standard cli here: https://github.com/sheerun/prettier-standard
+- Remove all config options and use .prettierrc instead
 
 ## [0.5.0]
 

@@ -1,26 +1,21 @@
-import {
-  languages,
-  ExtensionContext,
-  DocumentSelector,
-  window,
-  workspace
-} from 'vscode'
+const { languages } = require('vscode')
 
-import EditProvider from './edit-provider'
+const EditProvider = require('./edit-provider')
+const { supportedLanguageIds } = require('./language-map')
 
-const VALID_LANG = ['javascript', 'javascriptreact']
+const langs = [
+  ...supportedLanguageIds.map(language => ({ scheme: 'file', language })),
+  ...supportedLanguageIds.map(language => ({ scheme: 'untitled', language }))
+]
 
-export function activate (context) {
+exports.activate = function (context) {
   const editProvider = new EditProvider()
   context.subscriptions.push(
-    languages.registerDocumentRangeFormattingEditProvider(
-      VALID_LANG,
-      editProvider
-    )
+    languages.registerDocumentRangeFormattingEditProvider(langs, editProvider)
   )
   context.subscriptions.push(
-    languages.registerDocumentFormattingEditProvider(VALID_LANG, editProvider)
+    languages.registerDocumentFormattingEditProvider(langs, editProvider)
   )
 }
 
-export function deactivate () {}
+exports.deactivate = function () {}
