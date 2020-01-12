@@ -4,6 +4,7 @@ exports.supportedLanguageIds = [
   'json',
   'json5',
   'typescript',
+  'typescriptreact',
   'css',
   'scss',
   'less',
