@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0]
+
+- Add support for jsonc files
+- Add support for tsx files
+- Use our built-in prettier-standard if the project's version is outdated
+
 ## [0.6.0]
 
 - Move project from typescript to javascript
