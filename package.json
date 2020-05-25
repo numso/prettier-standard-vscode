@@ -29,6 +29,7 @@
     "onLanguage:javascriptreact",
     "onLanguage:json",
     "onLanguage:json5",
+    "onLanguage:jsonc",
     "onLanguage:typescript",
     "onLanguage:css",
     "onLanguage:scss",
