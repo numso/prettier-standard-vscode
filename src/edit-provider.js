@@ -18,7 +18,10 @@ module.exports = class PrettierEditProvider {
     const PATH = 'node_modules/prettier-standard/package.json'
     const [uri] = await workspace.findFiles(PATH)
     if (!uri) return
-    this.prettier = require(uri.fsPath.replace(/\/package\.json$/, ''))
+    const prettier = require(uri.fsPath.replace(/\/package\.json$/, ''))
+    if (prettier && prettier.resolveConfig && prettier.resolveConfig.sync) {
+      this.prettier = prettier
+    }
   }
 
   getConfigPath (document) {
