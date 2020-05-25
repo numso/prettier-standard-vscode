@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Allow formatting the vscode settings json
+
 ## [0.7.0]
 
 - Add support for jsonc files
