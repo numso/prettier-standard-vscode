@@ -39,7 +39,6 @@
     "onLanguage:html",
     "onLanguage:vue",
     "onLanguage:yaml",
-    "onLanguage:mdx",
     "onLanguage:flow",
     "onLanguage:angular"
   ],

@@ -14,7 +14,6 @@ exports.supportedLanguageIds = [
   'html',
   'vue',
   'yaml',
-  'mdx',
   'flow',
   'angular'
 ]
