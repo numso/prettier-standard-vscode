@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.1]
+
+- Fix issue where .tsx files wouldn't format immediately after opening the editor
+
 ## [0.8.0]
 
 - Allow formatting the vscode settings json
