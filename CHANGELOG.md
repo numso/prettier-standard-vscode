@@ -1,8 +1,10 @@
 # Changelog
 
-## Unreleased
+## [0.8.0]
 
 - Allow formatting the vscode settings json
+- Switch to the typescript formatter for .ts and .tsx files
+- Upgraded prettier-standard to 16.3.0
 
 ## [0.7.0]
 

@@ -19,9 +19,9 @@ exports.supportedLanguageIds = [
   'angular'
 ]
 
-exports.getPrettierParser = languageId => {
-  if (['javascript', 'javascriptreact'].includes(languageId)) return 'babel'
-  if (['typescript', 'typescriptreact'].includes(languageId)) return 'babel'
-  if (languageId === 'jsonc') return 'json'
-  return languageId
+exports.getPrettierParser = id => {
+  if (['javascript', 'javascriptreact'].includes(id)) return 'babel'
+  if (['typescript', 'typescriptreact'].includes(id)) return 'typescript'
+  if (id === 'jsonc') return 'json'
+  return id
 }
